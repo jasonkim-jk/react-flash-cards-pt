@@ -16,7 +16,7 @@ export default class Nav extends React.Component {
     const createClassName = (this.props.currentView === "create-card" ? "active " : "") + "nav-link"
 
     return (
-      <div className="mt-3 mr-3">
+      <div className="mt-3 mr-3 navbar-container">
         <ul className="nav nav-pills justify-content-end">
           <li className="nav-item">
             <a className={viewClassName} href="#" id="view-cards" onClick={this.handleClick}>View Cards</a>
