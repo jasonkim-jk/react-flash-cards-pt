@@ -18,7 +18,7 @@ export default class CreateCards extends React.Component {
               <label htmlFor="answer">Answer:</label>
             <textarea className="form-control" name="answer" id="answer" cols="30" rows="5"></textarea>
           </div>
-          <div className="form-button-container float-right">
+          <div className="form-button-container float-right mt-2">
             <button type="reset" className="btn btn-outline-danger mr-3">Cancel</button>
             <button type="submit" className="btn btn-outline-primary">Save Card</button>
           </div>

@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.create-card-container {
+  max-width: 60vw;
+  margin: 1rem auto;
+}
+
+.create-card-container button {
+  width: 7rem;
+}
