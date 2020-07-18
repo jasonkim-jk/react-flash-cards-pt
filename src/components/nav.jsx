@@ -3,20 +3,17 @@ import React from 'react'
 export default class Nav extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { "view-cards": "active", "review-cards": "", "create-card": "" }
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
-    this.setState({ "view-cards": "", "review-cards": "", "create-card": "" })
-    this.setState({[event.target.id] : "active"})
     this.props.setView(event.target.id)
   }
 
   render() {
-    const viewClassName = "nav-link " + this.state["view-cards"]
-    const reviewClassName = "nav-link " + this.state["review-cards"]
-    const createClassName = "nav-link " + this.state["create-card"]
+    const viewClassName = (this.props.currentView === "view-cards" ? "active " : "") + "nav-link"
+    const reviewClassName = (this.props.currentView === "review-cards" ? "active " : "") + "nav-link"
+    const createClassName = (this.props.currentView === "create-card" ? "active " : "") + "nav-link"
 
     return (
       <div className="mt-3 mr-3">

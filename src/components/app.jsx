@@ -19,7 +19,7 @@ export default class App extends React.Component {
   getView() {
     switch(this.state.view) {
       case 'create-card':
-        return <CreateCard newCard={this.addCard}/>;
+        return <CreateCard newCard={this.addCard} setPosition={this.setView}/>;
       case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
@@ -41,7 +41,7 @@ export default class App extends React.Component {
     console.log("Cards From App: ", this.state.cards)
     return (
       <div>
-        <Nav setView={this.setView} />
+        <Nav setView={this.setView} currentView={this.state.view}/>
         {this.getView()}
       </div>
     )
