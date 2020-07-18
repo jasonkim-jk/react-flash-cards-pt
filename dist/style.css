@@ -9,6 +9,8 @@
   max-width: 80vw;
 }
 
+.navbar-container a,
 .create-card-container button {
-  width: 7rem;
+  text-align: center;
+  width: 8rem;
 }
