@@ -3,9 +3,10 @@
   padding: 0;
 }
 
+.view-card-container,
 .create-card-container {
-  max-width: 60vw;
   margin: 1rem auto;
+  max-width: 80vw;
 }
 
 .create-card-container button {
