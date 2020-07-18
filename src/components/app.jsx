@@ -7,7 +7,7 @@ import Nav from './nav'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { view : 'view-cards'}
+    this.state = { view : 'view-cards', cards: [] }
     this.setView = this.setView.bind(this)
   }
 
@@ -28,7 +28,16 @@ export default class App extends React.Component {
     }
   }
 
+  saveCard() {
+    localStorage.setItem('flash-cards', JSON.stringify(this.state.cards));
+  }
+
+  addCard(card) {
+    this.setState({ cards: this.state.cards.concat(card) }, () => this.saveCard());
+  }
+
   render() {
+    console.log("Cards From App: ", this.state.cards)
     return (
       <div>
         <Nav setView={this.setView} />
