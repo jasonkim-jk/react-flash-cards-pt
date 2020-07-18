@@ -9,6 +9,7 @@ export default class App extends React.Component {
     super(props)
     this.state = { view : 'view-cards', cards: [] }
     this.setView = this.setView.bind(this)
+    this.addCard = this.addCard.bind(this)
   }
 
   setView(value) {
@@ -18,7 +19,7 @@ export default class App extends React.Component {
   getView() {
     switch(this.state.view) {
       case 'create-card':
-        return <CreateCard />;
+        return <CreateCard newCard={this.addCard}/>;
       case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
