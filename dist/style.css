@@ -4,6 +4,7 @@
 }
 
 .view-card-container,
+.review-card-container,
 .create-card-container {
   margin: 1rem auto;
   max-width: 80vw;
