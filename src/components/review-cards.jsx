@@ -6,6 +6,7 @@ export default class ReviewCards extends React.Component {
     this.state = { displaySide: "question" }
     this.nextCard = this.nextCard.bind(this)
     this.previousCard = this.previousCard.bind(this)
+    this.flipCard = this.flipCard.bind(this)
   }
 
   componentDidMount() {
@@ -13,16 +14,21 @@ export default class ReviewCards extends React.Component {
   }
 
   nextCard() {
-    const nextIndex = this.props.setActive.index + 1;
-    this.props.setActive(nextIndex)
+    const nextIndex = this.props.activeCard.index + 1;
     this.setState({displaySide: "question"})
+    this.props.setActive(nextIndex)
 
   }
 
   previousCard() {
-    const prevIndex = this.props.setActive.index - 1;
-    this.props.setActive(prevIndex)
+    const prevIndex = this.props.activeCard.index - 1;
     this.setState({displaySide: "question"})
+    this.props.setActive(prevIndex)
+  }
+
+  flipCard() {
+    const flip = this.state.displaySide === "question" ? "answer" : "question"
+    this.setState({ displaySide: flip})
   }
 
   render() {
@@ -31,8 +37,8 @@ export default class ReviewCards extends React.Component {
     return (
       <div className="review-card-container">
         <h1 className="text-center mb-3">Review Cards</h1>
-        <div className="review-card">
-          <h2>{qna}</h2>
+        <div className="review-card align-middle">
+          <span className={`text-center ${this.state.displaySide}`} onClick={this.flipCard}>{qna}</span>
           <a href="#" className="previous" onClick={this.previousCard}>&#10094;</a>
           <a href="#" className="next" onClick={this.nextCard}>&#10095;</a>
         </div>

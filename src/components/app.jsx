@@ -47,7 +47,7 @@ export default class App extends React.Component {
       cardIndex = this.state.cards.length - 1
     }
 
-    this.setState({ activeCard: { index: 0, card: this.state.cards[cardIndex]}})
+    this.setState({ activeCard: { index: cardIndex, card: this.state.cards[cardIndex]}})
   }
 
   render() {
