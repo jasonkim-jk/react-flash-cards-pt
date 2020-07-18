@@ -7,12 +7,14 @@ import Nav from './nav'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { view : 'view-cards', cards: [] }
+    this.state = { view: 'view-cards', cards: [], activeCard: {} }
     this.setView = this.setView.bind(this)
     this.addCard = this.addCard.bind(this)
+    this.setActiveCard = this.setActiveCard.bind(this)
   }
 
   setView(value) {
+
     this.setState({ view: value })
   }
 
@@ -21,7 +23,7 @@ export default class App extends React.Component {
       case 'create-card':
         return <CreateCard newCard={this.addCard} setPosition={this.setView}/>;
       case 'review-cards':
-        return <ReviewCards />;
+        return <ReviewCards activeCard={this.state.activeCard} setActive={this.setActiveCard}/>;
       case 'view-cards':
         return <ViewCards cards={this.state.cards}/>;
       default:
@@ -35,6 +37,10 @@ export default class App extends React.Component {
 
   addCard(card) {
     this.setState({ cards: this.state.cards.concat(card) }, () => this.saveCard());
+  }
+
+  setActiveCard(cardIndex) {
+    this.setState({activeCard: this.state.cards[cardIndex]})
   }
 
   render() {
