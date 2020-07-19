@@ -1,4 +1,5 @@
 import React from "react";
+import ProgressBar from './progress-bar'
 
 export default class ReviewCards extends React.Component {
   constructor(props) {
@@ -33,10 +34,12 @@ export default class ReviewCards extends React.Component {
 
   render() {
     const qna = this.state.displaySide === "question" ? this.props.activeCard.card.question : this.props.activeCard.card.answer
+    const percent = Math.round(((this.props.activeCard.index + 1)/ this.props.cards.length).toFixed(2) * 100) + '%';
 
     return (
       <div className="review-card-container">
         <h1 className="text-center mb-3">Review Cards</h1>
+        <ProgressBar percent={percent} />
         <div className="review-card align-middle">
           <span className={`text-center ${this.state.displaySide}`} onClick={this.flipCard}>{qna}</span>
           <a href="#" className="previous" onClick={this.previousCard}>&#10094;</a>

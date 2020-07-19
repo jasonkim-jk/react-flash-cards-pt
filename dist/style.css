@@ -74,9 +74,8 @@
 }
 
 .view-card-container .modal-content {
-  height: 40vh;
-  width: 85vh;
-  position: relative;
+  height: 40%;
+  width: 85%;
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
