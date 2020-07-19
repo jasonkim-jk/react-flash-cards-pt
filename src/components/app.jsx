@@ -24,7 +24,7 @@ export default class App extends React.Component {
       case 'review-cards':
         return <ReviewCards activeCard={this.state.activeCard} setActive={this.setActiveCard}/>
       case 'view-cards':
-        return <ViewCards cards={this.state.cards}/>
+        return <ViewCards cards={this.state.cards} removeCard={this.deleteCard}/>
       default:
         return null;
     }
@@ -36,6 +36,10 @@ export default class App extends React.Component {
 
   addCard(card) {
     this.setState({ cards: this.state.cards.concat(card) }, () => this.saveCard())
+  }
+
+  deleteCard(card) {
+    console.log("remove: ", card)
   }
 
   setActiveCard(cardIndex) {

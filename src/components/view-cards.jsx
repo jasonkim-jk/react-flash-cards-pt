@@ -3,13 +3,28 @@ import React from "react";
 export default class ViewCards extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showModal : "modal-none" }
+    this.state = { showModal : "modal-none", selectedCard: {} }
     this.handleErase = this.handleErase.bind(this)
+    this.handleCancel = this.handleCancel.bind(this)
+    this.handleConfirm = this.handleConfirm.bind(this)
   }
 
   handleErase(event) {
     console.log("id: ", event.target.id, "modal: ", this.state.showModal)
-    this.state.showModal === "modal-none" ? this.setState({ showModal: "modal-show" }) : this.setState({ showModal: "modal-none" })
+    if (this.state.showModal === "modal-none") {
+      this.setState({ showModal: "modal-show", selectedCard: this.props.cards[event.target.id]})
+    } else {
+      this.setState({ showModal: "modal-none" })
+    }
+  }
+
+  handleCancel() {
+    this.setState({ showModal: "modal-none", selectedCard: {} })
+  }
+
+  handleConfirm() {
+    this.handleCancel()
+    this.props.removeCard(this.state.selectedCard)
   }
 
   render() {
@@ -38,14 +53,12 @@ export default class ViewCards extends React.Component {
         <div className="modal-content">
           <div className="modal-card-container">
             <h3>Are you sure you want to delete this card?</h3>
-            <h5 className="pl-3 mt-3"><b>Q: </b>What is you name?</h5>
-            <h5 className="pl-3 mt-3"><b>A: </b>Jason Kim</h5>
+            <h5 className="pl-3 mt-3"><b>Q: </b>{`${this.state.selectedCard.question}`}</h5>
+            <h5 className="pl-3 mt-3"><b>A: </b>{`${this.state.selectedCard.answer}`}</h5>
           </div>
           <div className="button-container mt-2">
-            <button className="btn btn-outline-danger btn-sm mr-3">Cancel</button>
-            <button className="btn btn-outline-primary btn-sm mr-3">Confirm</button>
-            {/* <button type="reset" className="btn btn-outline-danger mr-3" onClick={this.reset}>Cancel</button>
-            <button type="submit" className="btn btn-outline-primary" onClick={this.handleSave}>Save Card</button> */}
+            <button className="btn btn-outline-danger btn-sm mr-3" onClick={this.handleCancel}>Cancel</button>
+            <button className="btn btn-outline-primary btn-sm mr-3" onClick={this.handleConfirm}>Confirm</button>
           </div>
         </div>
       </div>
