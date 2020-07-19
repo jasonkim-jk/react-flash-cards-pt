@@ -10,6 +10,7 @@ export default class App extends React.Component {
     this.state = { view: 'view-cards', cards: [], activeCard: { index: 0, card: {}} }
     this.setView = this.setView.bind(this)
     this.addCard = this.addCard.bind(this)
+    this.deleteCard = this.deleteCard.bind(this)
     this.setActiveCard = this.setActiveCard.bind(this)
   }
 
@@ -24,7 +25,7 @@ export default class App extends React.Component {
       case 'review-cards':
         return <ReviewCards activeCard={this.state.activeCard} setActive={this.setActiveCard}/>
       case 'view-cards':
-        return <ViewCards cards={this.state.cards}/>
+        return <ViewCards cards={this.state.cards} removeCard={this.deleteCard}/>
       default:
         return null;
     }
@@ -36,6 +37,12 @@ export default class App extends React.Component {
 
   addCard(card) {
     this.setState({ cards: this.state.cards.concat(card) }, () => this.saveCard())
+  }
+
+  deleteCard(cardIndex) {
+    const newCards = [...this.state.cards]
+    newCards.splice(cardIndex, 1)
+    this.setState({ cards: newCards }, () => this.saveCard())
   }
 
   setActiveCard(cardIndex) {
