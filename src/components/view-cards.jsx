@@ -31,7 +31,7 @@ export default class ViewCards extends React.Component {
   }
 
   updateCardData(card) {
-    this.setState({ updateView: false })
+    this.setState({ selectedCard: card, updateView: false }, () => this.props.updateCard(card, this.state.selectedID))
   }
 
   handleConfirm() {

@@ -11,6 +11,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this)
     this.addCard = this.addCard.bind(this)
     this.deleteCard = this.deleteCard.bind(this)
+    this.updateCard = this.updateCard.bind(this)
     this.setActiveCard = this.setActiveCard.bind(this)
   }
 
@@ -25,7 +26,7 @@ export default class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActive={this.setActiveCard}/>
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} removeCard={this.deleteCard}/>
+        return <ViewCards cards={this.state.cards} removeCard={this.deleteCard} updateCard={this.updateCard}/>
       default:
         return null;
     }
@@ -50,6 +51,12 @@ export default class App extends React.Component {
     this.setState({ cards: newCards }, () => this.saveCard())
   }
 
+  updateCard(card, cardIndex) {
+    const newCards = [...this.state.cards]
+    newCards[cardIndex] = card
+    this.setState({ cards: newCards }, () => this.saveCard())
+  }
+
   setActiveCard(cardIndex) {
     if (this.state.cards.length === 0) return;
 
@@ -63,7 +70,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log("Cards From App: ", this.state.cards)
+    // console.log("Cards From App: ", this.state.cards)
     return (
       <div>
         <Nav setView={this.setView} currentView={this.state.view}/>
