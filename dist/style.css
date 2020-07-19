@@ -5,12 +5,14 @@
 
 .view-card-container,
 .review-card-container,
+.update-card-container,
 .create-card-container {
   margin: 1rem auto;
   max-width: 80vw;
 }
 
 .navbar-container a,
+.update-card-container button,
 .create-card-container button {
   text-align: center;
   width: 8rem;

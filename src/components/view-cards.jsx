@@ -4,39 +4,45 @@ import UpdateCard from './update-card'
 export default class ViewCards extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showModal : "modal-none", selectedCard: {}, index: -1, updateView: false }
+    this.state = { showModal : "modal-none", selectedCard: {}, selectedID: -1, updateView: false }
     this.handleErase = this.handleErase.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.updateCardData = this.updateCardData.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
   }
 
   handleErase(event) {
     const id = parseInt(event.target.id);
     if (this.state.showModal === "modal-none") {
-      this.setState({ showModal: "modal-show", selectedCard: this.props.cards[id], index: id })
+      this.setState({ showModal: "modal-show", selectedCard: this.props.cards[id], selectedID: id })
     } else {
       this.setState({ showModal: "modal-none" })
     }
   }
 
   handleCancel() {
-    this.setState({ showModal: "modal-none", selectedCard: {}, index: -1 })
+    this.setState({ showModal: "modal-none", selectedCard: {}, selectedID: -1, updateView: false })
   }
 
-  handleUpdate() {
-    this.setState({ updateView: true })
+  handleUpdate(event) {
+    const id = parseInt(event.target.id);
+    this.setState({ selectedCard: this.props.cards[id], selectedID: id, updateView: true })
+  }
+
+  updateCardData(card) {
+    this.setState({ updateView: false })
   }
 
   handleConfirm() {
     this.handleCancel()
-    this.props.removeCard(this.state.index)
+    this.props.removeCard(this.state.selectedID)
   }
 
   render() {
     if(this.state.updateView) {
       return (
-        <UpdateCard />
+        <UpdateCard card={this.state.selectedCard} update={this.updateCardData} cancel={this.handleCancel}/>
       )
     } else {
       const cardDeck = (

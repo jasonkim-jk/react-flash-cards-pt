@@ -3,7 +3,7 @@ import React from "react";
 export default class UpdateCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { question: "", answer: "" }
+    this.state = { question: this.props.card.question, answer: this.props.card.answer }
     this.reset = this.reset.bind(this)
     this.handleSave = this.handleSave.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -11,13 +11,12 @@ export default class UpdateCard extends React.Component {
 
   reset() {
     this.setState({ question: "", answer: "" })
-    this.props.setPosition("view-cards")
+    this.props.cancel();
   }
 
   handleSave(event) {
     event.preventDefault()
-    this.props.newCard(this.state)
-    this.reset()
+    this.props.update(this.state)
   }
 
   handleChange(event) {
