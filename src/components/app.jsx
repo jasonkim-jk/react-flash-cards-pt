@@ -23,7 +23,7 @@ export default class App extends React.Component {
       case 'create-card':
         return <CreateCard newCard={this.addCard} setPosition={this.setView}/>
       case 'review-cards':
-        return <ReviewCards activeCard={this.state.activeCard} setActive={this.setActiveCard}/>
+        return <ReviewCards cards={this.state.cards} activeCard={this.state.activeCard} setActive={this.setActiveCard}/>
       case 'view-cards':
         return <ViewCards cards={this.state.cards} removeCard={this.deleteCard}/>
       default:
