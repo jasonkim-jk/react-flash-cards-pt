@@ -58,3 +58,49 @@
 .review-card-container a:hover {
   color: lightslategray;
 }
+
+.view-card-container {
+  position: relative;
+}
+
+.view-card-container .modal {
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.view-card-container .modal-content {
+  height: 40vh;
+  width: 85vh;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.view-card-container .modal-card-container {
+  min-height: 80%;
+}
+
+.view-card-container .button-container {
+  text-align: right;
+}
+
+.view-card-container .modal-show {
+  display: block;
+}
+
+.view-card-container .modal-none {
+  display: none;
+}
+
+.view-card-container i {
+  cursor: pointer;
+}
