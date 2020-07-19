@@ -3,28 +3,28 @@ import React from "react";
 export default class ViewCards extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showModal : "modal-none", selectedCard: {} }
+    this.state = { showModal : "modal-none", selectedCard: {}, index: -1 }
     this.handleErase = this.handleErase.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
   }
 
   handleErase(event) {
-    console.log("id: ", event.target.id, "modal: ", this.state.showModal)
+    const id = parseInt(event.target.id);
     if (this.state.showModal === "modal-none") {
-      this.setState({ showModal: "modal-show", selectedCard: this.props.cards[event.target.id]})
+      this.setState({ showModal: "modal-show", selectedCard: this.props.cards[id], index: id })
     } else {
       this.setState({ showModal: "modal-none" })
     }
   }
 
   handleCancel() {
-    this.setState({ showModal: "modal-none", selectedCard: {} })
+    this.setState({ showModal: "modal-none", selectedCard: {}, index: -1 })
   }
 
   handleConfirm() {
     this.handleCancel()
-    this.props.removeCard(this.state.selectedCard)
+    this.props.removeCard(this.state.index)
   }
 
   render() {

@@ -10,6 +10,7 @@ export default class App extends React.Component {
     this.state = { view: 'view-cards', cards: [], activeCard: { index: 0, card: {}} }
     this.setView = this.setView.bind(this)
     this.addCard = this.addCard.bind(this)
+    this.deleteCard = this.deleteCard.bind(this)
     this.setActiveCard = this.setActiveCard.bind(this)
   }
 
@@ -38,8 +39,10 @@ export default class App extends React.Component {
     this.setState({ cards: this.state.cards.concat(card) }, () => this.saveCard())
   }
 
-  deleteCard(card) {
-    console.log("remove: ", card)
+  deleteCard(cardIndex) {
+    const newCards = [...this.state.cards]
+    newCards.splice(cardIndex, 1)
+    this.setState({ cards: newCards }, () => this.saveCard())
   }
 
   setActiveCard(cardIndex) {
