@@ -40,8 +40,9 @@ export default class ViewCards extends React.Component {
               <h5 className="card-title">Answer:</h5>
               <p className="card-text">{card.answer}</p>
             </div>
-            <div className="card-footer bg-secondary">
-              <p className="text-center m-0"><i className="fas fa-trash-alt" id={index} onClick={this.handleErase}></i></p>
+            <div className="card-footer bg-secondary text-center">
+              <span className="text-center m-0 mr-3"><i className="fas fa-edit" id={index}></i></span>
+              <span className="text-center m-0"><i className="fas fa-trash-alt" id={index} onClick={this.handleErase}></i></span>
             </div>
           </div>
         </div>
