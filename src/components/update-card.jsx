@@ -25,7 +25,7 @@ export default class UpdateCard extends React.Component {
 
   render() {
     return (
-      <div className="update-card-container">
+      <div className="update-card-container my-3 mx-auto w-75">
         <h1 className="text-center">Update Card</h1>
         <form>
           <div className="form-group">
@@ -37,7 +37,7 @@ export default class UpdateCard extends React.Component {
             <textarea className="form-control" name="answer" id="answer" cols="30" rows="5" value={this.state.answer} onChange={this.handleChange}></textarea>
           </div>
           <div className="form-button-container float-right mt-2">
-            <button type="reset" className="btn btn-outline-danger mr-3" onClick={this.reset}>Cancel</button>
+            <button type="reset" className="btn btn-outline-danger mr-3 px-4" onClick={this.reset}>Cancel</button>
             <button type="submit" className="btn btn-outline-primary" onClick={this.handleSave}>Save Card</button>
           </div>
         </form>

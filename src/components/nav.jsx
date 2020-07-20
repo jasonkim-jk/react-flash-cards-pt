@@ -12,7 +12,7 @@ export default class Nav extends React.Component {
 
   render() {
     const viewClassName = (this.props.currentView === "view-cards" ? "active " : "") + "nav-link"
-    const reviewClassName = (this.props.currentView === "review-cards" ? "active " : "") + "nav-link"
+    const reviewClassName = (this.props.currentView === "review-cards" ? "active " : "") + "nav-link px-4"
     const createClassName = (this.props.currentView === "create-card" ? "active " : "") + "nav-link"
 
     return (

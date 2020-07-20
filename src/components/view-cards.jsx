@@ -67,14 +67,15 @@ export default class ViewCards extends React.Component {
       )
 
       const modal = (
-        <div className={`modal ${this.state.showModal}`}>
-          <div className="modal-content">
-            <div className="modal-card-container">
+        <div className={`${this.state.showModal} modal position-fixed vw-100 vh-100`} style={{ zIndex: 3000, left: 0, top: 0}}>
+          <div className="modal-content m-auto p-4 bg-light"
+            style={{ height: '40%', width: "85%", top: "50%", borderRadius: "20px" }}>
+            <div className="modal-card-container" style={{minHeight: '80%'}}>
               <h3>Are you sure you want to delete this card?</h3>
               <h5 className="pl-3 mt-3"><b>Q: </b>{`${this.state.selectedCard.question}`}</h5>
               <h5 className="pl-3 mt-3"><b>A: </b>{`${this.state.selectedCard.answer}`}</h5>
             </div>
-            <div className="button-container mt-2">
+            <div className="button-container mt-2 text-right">
               <button className="btn btn-outline-danger btn-sm mr-3" onClick={this.handleCancel}>Cancel</button>
               <button className="btn btn-outline-primary btn-sm mr-3" onClick={this.handleConfirm}>Confirm</button>
             </div>
@@ -83,7 +84,7 @@ export default class ViewCards extends React.Component {
       )
 
       return (
-        <div className="view-card-container">
+        <div className="view-card-container position-relative my-3 mx-auto w-75">
           <h1 className="text-center mb-3">My Cards</h1>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3">
             {cardDeck}

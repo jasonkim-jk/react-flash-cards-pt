@@ -70,7 +70,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log("Cards From App: ", this.state.cards)
     return (
       <div>
         <Nav setView={this.setView} currentView={this.state.view}/>
