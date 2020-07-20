@@ -1,9 +1,9 @@
 import React from "react";
 
-export default class CreateCards extends React.Component {
+export default class UpdateCard extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { question: "", answer:"" }
+    this.state = { question: this.props.card.question, answer: this.props.card.answer }
     this.reset = this.reset.bind(this)
     this.handleSave = this.handleSave.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -11,13 +11,12 @@ export default class CreateCards extends React.Component {
 
   reset() {
     this.setState({ question: "", answer: "" })
-    this.props.setPosition("view-cards")
+    this.props.cancel();
   }
 
   handleSave(event) {
     event.preventDefault()
-    this.props.newCard(this.state)
-    this.reset()
+    this.props.update(this.state)
   }
 
   handleChange(event) {
@@ -26,15 +25,15 @@ export default class CreateCards extends React.Component {
 
   render() {
     return (
-      <div className="create-card-container my-3 mx-auto w-75">
-        <h1 className="text-center">Create New Card</h1>
+      <div className="update-card-container my-3 mx-auto w-75">
+        <h1 className="text-center">Update Card</h1>
         <form>
           <div className="form-group">
             <label htmlFor="question">Question:</label>
             <textarea className="form-control" name="question" id="question" cols="30" rows="5" value={this.state.question} onChange={this.handleChange}></textarea>
           </div>
           <div className="form-group">
-              <label htmlFor="answer">Answer:</label>
+            <label htmlFor="answer">Answer:</label>
             <textarea className="form-control" name="answer" id="answer" cols="30" rows="5" value={this.state.answer} onChange={this.handleChange}></textarea>
           </div>
           <div className="form-button-container float-right mt-2">

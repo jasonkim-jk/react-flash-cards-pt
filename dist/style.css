@@ -3,34 +3,8 @@
   padding: 0;
 }
 
-.view-card-container,
-.review-card-container,
-.create-card-container {
-  margin: 1rem auto;
-  max-width: 80vw;
-}
-
-.navbar-container a,
-.create-card-container button {
-  text-align: center;
-  width: 8rem;
-}
-
-.review-card-container .review-card {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  display: table;
-}
-
 .review-card-container span {
-  max-width: 95%;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 2rem;
-  padding: 4rem;
   background-color: darkgray;
-  border-radius: 5px;
   transition: background-color 0.5s ease;
 }
 
@@ -40,56 +14,19 @@
 
 .review-card-container .previous,
 .review-card-container .next {
-  cursor: pointer;
-  position: absolute;
-  top: 33%;
-  padding: 1rem;
-  font-size: 4rem;
   color: darkslategray;
-  text-decoration: none;
-}
-.review-card-container .previous {
-  left: 0;
-}
-.review-card-container .next {
-  right: 0;
 }
 
 .review-card-container a:hover {
   color: lightslategray;
 }
 
-.view-card-container {
-  position: relative;
-}
-
 .view-card-container .modal {
-  position: fixed;
-  z-index: 3000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .view-card-container .modal-content {
-  height: 40%;
-  width: 85%;
-  top: 50%;
   transform: translateY(-50%);
-  margin: auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 20px;
-}
-
-.view-card-container .modal-card-container {
-  min-height: 80%;
-}
-
-.view-card-container .button-container {
-  text-align: right;
 }
 
 .view-card-container .modal-show {
