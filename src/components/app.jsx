@@ -34,7 +34,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const savedData = JSON.parse(localStorage.getItem('flash-cards'))
-    this.setState({ cards: savedData })
+    savedData ? this.setState({ cards: savedData }) : this.setState({ cards: [] })
   }
 
   saveCard() {
